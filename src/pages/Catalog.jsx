@@ -1,17 +1,25 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Breadcrumb from "../components/Breadcrumb";
 import ProductService from "../services/ProductService";
 import { useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
+colorList = ["black", "white", "red", "grey", "yellow"];
 
 export default function Catalog() {
   const [products, setProducts] = useState([]);
+  const { category, gender } = useParams();
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(1000);
+  const colorObj = this.colorList.reduce((a, v) => ({ ...a, [v]: false }), {});
 
   useEffect(() => {
-    ProductService.getProducts({}).then((data) => {
-      setProducts(data);
-    });
-  }, []);
+    ProductService.getProducts({ category, gender, minPrice, maxPrice }).then(
+      (data) => {
+        setProducts(data);
+      }
+    );
+    window.scrollTo(0, 0);
+  }, [minPrice, maxPrice]);
 
   return (
     <>
@@ -123,6 +131,8 @@ export default function Catalog() {
                     type="number"
                     className="h-8 w-[90px] border pl-2"
                     placeholder="50"
+                    value={minPrice}
+                    onChange={(e) => setMinPrice(e.target.value)}
                   />
                   <span className="px-3">-</span>
                   <input
@@ -131,6 +141,8 @@ export default function Catalog() {
                     max="999999"
                     className="h-8 w-[90px] border pl-2"
                     placeholder="99999"
+                    value={maxPrice}
+                    onChange={(e) => setMaxPrice(e.target.value)}
                   />
                 </div>
               </div>
@@ -254,10 +266,11 @@ export default function Catalog() {
           </div>
 
           <section className="mx-auto grid max-w-[1200px] grid-cols-2 gap-3 px-5 pb-10 lg:grid-cols-3">
-            {products.length &&
-              products.map((product) => (
-                <ProductCard key={product.id} product={product} />
-              ))}
+            {!products.length
+              ? null
+              : products.map((product) => (
+                  <ProductCard key={product.id} product={product} />
+                ))}
           </section>
         </div>
       </section>

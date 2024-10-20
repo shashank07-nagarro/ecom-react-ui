@@ -4,15 +4,19 @@ import { useEffect, useState } from "react";
 import productService from "../services/ProductService";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../store/cartSlice";
+import Recommendation from "../components/Recommendation";
+import { Button } from "../components";
 
 export default function Product() {
   const params = useParams();
   const [product, setProduct] = useState(null);
+  const [category, setCategory] = useState("");
   const dispatch = useDispatch();
   useEffect(() => {
     productService.getProductById(params.id).then((data) => {
       if (data) {
         setProduct(data);
+        setCategory(data.categories[0].alias);
         window.scrollTo(0, 0);
       }
     });
@@ -201,7 +205,7 @@ export default function Product() {
               </div>
 
               <div className="mt-7 flex flex-row items-center gap-6">
-                <button
+                <Button
                   onClick={() => dispatch(addToCart({ product }))}
                   className="flex h-12 w-1/3 items-center justify-center bg-violet-900 text-white duration-100 hover:bg-blue-800"
                 >
@@ -220,7 +224,7 @@ export default function Product() {
                     />
                   </svg>
                   Add to cart
-                </button>
+                </Button>
                 <button className="flex h-12 w-1/3 items-center justify-center bg-amber-400 duration-100 hover:bg-yellow-300">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -280,6 +284,7 @@ export default function Product() {
           </section>
         </>
       )}
+      <Recommendation category={category} />
     </>
   );
 }

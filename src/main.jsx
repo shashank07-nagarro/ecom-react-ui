@@ -49,15 +49,12 @@ const router = createBrowserRouter([
           </Protected>
         ),
       },
+      { path: "/catalog/:category/:gender", element: <Catalog /> },
+      { path: "/catalog/:category", element: <Catalog /> },
       { path: "/catalog", element: <Catalog /> },
       {
         path: "/product/:alias/:id",
-        element: (
-          <>
-            <Product />
-            <Recommendation />
-          </>
-        ),
+        element: <Product />,
       },
       {
         path: "/account",

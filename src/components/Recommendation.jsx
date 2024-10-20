@@ -2,14 +2,14 @@ import ProductService from "./../services/ProductService";
 import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 
-export default function Recommendation() {
+export default function Recommendation(props) {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    ProductService.getProducts({}).then((data) => {
+    ProductService.getProducts({ ...props }).then((data) => {
       setProducts(data);
     });
-  }, []);
+  }, [props]);
   return (
     <>
       <p className="mx-auto mt-10 mb-5 max-w-[1200px] px-5">

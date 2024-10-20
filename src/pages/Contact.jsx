@@ -1,24 +1,17 @@
 import { Link } from "react-router-dom";
+import { Banner } from "../components";
 
 export default function Contact() {
   return (
     <>
-      <div className="relative">
-        <img
-          className="w-full object-cover brightness-50 filter lg:h-[500px]"
-          src="./public/images/contact-bg.jpeg"
-          alt="Iphone with Macbook image"
-        />
-
-        <div className="absolute top-1/2 left-1/2 mx-auto flex w-11/12 max-w-[1200px] -translate-x-1/2 -translate-y-1/2 flex-col text-center text-white lg:ml-5">
-          <h1 className="text-4xl font-bold sm:text-5xl">Contact us</h1>
-          <p className="mx-auto pt-3 text-xs lg:w-3/5 lg:pt-5 lg:text-base">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+      <Banner
+        imageUrl="./public/images/contact-bg.jpeg"
+        title="Contact Us"
+        description="Lorem ipsum dolor sit amet consectetur, adipisicing elit.
             Consequatur aperiam natus, nulla, obcaecati nesciunt, itaque
-            adipisci earum ducimus pariatur eaque labore.
-          </p>
-        </div>
-      </div>
+            adipisci earum ducimus pariatur eaque labore."
+        className="mx-auto"
+      />
 
       <section className="w-full flex-grow">
         <section className="mx-auto w-full my-6 grid max-w-[1200px] grid-cols-1 gap-3 px-5 pb-10 lg:grid-cols-3 lg:pt-10">

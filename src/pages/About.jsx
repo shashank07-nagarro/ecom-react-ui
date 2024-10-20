@@ -1,22 +1,16 @@
+import { Banner } from "../components";
+
 export default function About() {
   return (
     <>
-      <div className="relative">
-        <img
-          className="w-full object-cover brightness-50 filter lg:h-[500px]"
-          src="./public/images/about-us-bg.jpeg"
-          alt="Iphone with Macbook image"
-        />
-
-        <div className="absolute top-1/2 left-1/2 mx-auto flex w-11/12 max-w-[1200px] -translate-x-1/2 -translate-y-1/2 flex-col text-center text-white lg:ml-5">
-          <h1 className="text-4xl font-bold sm:text-5xl">About Us</h1>
-          <p className="mx-auto pt-3 text-xs lg:w-3/5 lg:pt-5 lg:text-base">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            Consequatur aperiam natus, nulla, obcaecati nesciunt, itaque
-            adipisci earum ducimus pariatur eaque labore.
-          </p>
-        </div>
-      </div>
+      <Banner
+        imageUrl="./public/images/about-us-bg.jpeg"
+        title="About Us"
+        description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur
+          aperiam natus, nulla, obcaecati nesciunt, itaque adipisci earum
+          ducimus pariatur eaque labore."
+        className="mx-auto"
+      />
 
       <section className="flex-grow">
         <div className="mt-6 flex flex-col gap-3">

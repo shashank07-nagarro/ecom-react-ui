@@ -21,6 +21,12 @@ export class ProductService {
   async getProductById(id) {
     return await fetch(`${this.apiUrl}/${id}`).then((res) => res.json());
   }
+
+  async getCategories() {
+    return await fetch(`http://localhost:3000/categories`).then((res) =>
+      res.json()
+    );
+  }
 }
 
 const productService = new ProductService();

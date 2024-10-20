@@ -134,7 +134,7 @@ export default function ProductCard({ product }) {
           {gotoCart ? (
             <Link to="/cart">
               <button className="my-5 h-10 w-full bg-violet-900 text-white">
-                Goto to cart
+                Go to cart
               </button>
             </Link>
           ) : (
